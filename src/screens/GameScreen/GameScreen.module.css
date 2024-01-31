@@ -1,0 +1,59 @@
+.game_page{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../assets/Color Pack 6 1.png");
+    position: relative;
+    }
+
+.questions {
+    margin-bottom: 20px;
+    padding: 50px;
+    border: 2px solid #eedd44;
+    border-radius: 808px;
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-family: Modak, serif;
+    font-size: 25px;
+}
+
+.answers_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 210px;
+    grid-row-gap: 50px;
+}
+
+.answers_button {
+    gap: 16px;
+    border: 2px solid #eedd44;
+    border-radius: 808px;
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-family: Modak, serif;
+    font-size: 25px;
+}
+
+.end_notification {
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-family: Modak, serif;
+    font-size: 50px;
+}
+
+.progress_control {
+    margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 500px;
+    position: absolute;
+    bottom: 400px;
+    right: 277px;
+
+}

@@ -1,8 +1,8 @@
 .main_page{
-    width: 1920px;
-    height: 960px;
+    width: 100vw;
+    height: 100vh;
     background-image: url("../../assets/Color Pack 6 1.png");
-}
+    }
 
 .main_header{
     text-align: center;
