@@ -1,0 +1,14 @@
+.menu_button {
+    display: flex;
+    padding: 16px 40px;
+    align-items: center;
+    gap: 16px;
+    border: 2px solid #eedd44;
+    border-radius: 808px;
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-family: Modak, serif;
+    font-size: 25px;
+    color: white;
+}

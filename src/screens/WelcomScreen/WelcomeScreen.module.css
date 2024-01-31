@@ -1,0 +1,33 @@
+.main_page{
+    width: 1920px;
+    height: 960px;
+    background-image: url("../../assets/Color Pack 6 1.png");
+}
+
+.main_header{
+    text-align: center;
+    text-shadow: 8px 8px 0 #9E52FF;
+    font-family: Modak, serif;
+    font-size: 240px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.select_menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 20px;
+}

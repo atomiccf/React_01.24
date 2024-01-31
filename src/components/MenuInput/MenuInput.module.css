@@ -1,0 +1,22 @@
+#menu_input{
+    width: 200px;
+    height: 40px;
+    margin-left: 25px;
+    padding-left: 5px;
+    border-radius: 8px;
+    border: 2px solid #eedd44;
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    color: white;
+    font-family: Modak, serif;
+    font-size: 25px;
+}
+
+label{
+    font-family: Modak, serif;
+    font-size: 25px;
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
