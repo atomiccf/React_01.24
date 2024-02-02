@@ -1,0 +1,14 @@
+.progress{
+    width: 200px;
+    height: 25px;
+}
+
+label {
+    display: block;
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-family: Modak, serif;
+    font-size: 30px;
+    margin-top: 10px;
+}
