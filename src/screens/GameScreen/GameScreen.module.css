@@ -10,7 +10,7 @@
     }
 
 .questions {
-    margin-bottom: 20px;
+    margin-bottom: 100px;
     padding: 50px;
     border: 2px solid #eedd44;
     border-radius: 808px;
@@ -53,7 +53,7 @@
     grid-template-columns: 1fr;
     grid-column-gap: 500px;
     position: absolute;
-    bottom: 400px;
+    bottom: 700px;
     right: 277px;
 
 }
