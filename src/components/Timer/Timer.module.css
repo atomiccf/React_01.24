@@ -1,0 +1,7 @@
+.timer {
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-family: Modak, serif;
+    font-size: 30px;
+}
