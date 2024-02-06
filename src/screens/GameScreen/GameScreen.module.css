@@ -14,11 +14,10 @@
     padding: 50px;
     border: 2px solid #eedd44;
     border-radius: 808px;
-    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    background-color: #ffffff;
+    color: #cf23cf;
     font-family: Modak, serif;
-    font-size: 25px;
+    font-size: 35px;
 }
 
 .answers_container{
@@ -32,15 +31,14 @@
     gap: 16px;
     border: 2px solid #eedd44;
     border-radius: 808px;
-    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    background-color: #ffffff;
+    color: #cf23cf;
     font-family: Modak, serif;
-    font-size: 25px;
+    font-size: 35px;
 }
 
 .end_notification {
-    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-family: Modak, serif;
