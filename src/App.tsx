@@ -1,10 +1,10 @@
 import './App.css'
-import {GameScreen} from './screens/GameScreen/GameScreen.tsx'
+import {StatsScreen} from './screens/StatsScreen/StatsScreen.tsx'
 
 function App() {
   return (
     <>
-      <GameScreen />
+      <StatsScreen />
     </>
   )
 }
