@@ -2,9 +2,18 @@ import css from './WelcomeScreen.module.css'
 import {MenuButton} from '../../components/MenuButton/MenuButton.tsx'
 import {MenuInput} from '../../components/MenuInput/MenuInput.tsx'
 import {MenuSelect} from '../../components/MenuSelect/MenuSelect.tsx'
+import {useNavigate} from 'react-router-dom'
 import React from 'react'
 
 export const WelcomeScreen: React.FC = () => {
+  const navigate = useNavigate()
+  const handleStartButton = () => {
+    navigate('/game')
+  }
+  const handleStatButton = () => {
+    navigate('/stats')
+  }
+
   return (
     <div className={css.main_page}>
       <h1 className={css.main_header}>Virtual Quiz</h1>
@@ -25,8 +34,8 @@ export const WelcomeScreen: React.FC = () => {
         <MenuInput />
       </div>
       <div className={css.controls}>
-        <MenuButton text="Start quiz" />
-        <MenuButton text="See my statistics" />
+        <MenuButton handleButton={handleStartButton} text="Start quiz" />
+        <MenuButton handleButton={handleStatButton} text="See my statistics" />
       </div>
     </div>
   )

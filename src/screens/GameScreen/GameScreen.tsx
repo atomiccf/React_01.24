@@ -3,9 +3,14 @@ import React, {useState} from 'react'
 import {ProgressBar} from '../../components/ProgressBar/ProgressBar.tsx'
 import {Timer} from '../../components/Timer/Timer.tsx'
 import {MenuButton} from '../../components/MenuButton/MenuButton.tsx'
+import {PopUp} from '../../components/PopUp/PopUp.tsx'
+import {useNavigate} from 'react-router-dom'
 
 export const GameScreen: React.FC = () => {
   const [activeQuestion, setActiveQuestion] = useState<number>(0)
+  const [activeValue, setActiveValue] = useState<string>('hidden')
+  const text = 'Do you want to stop this quiz? ?'
+  const navigate = useNavigate()
 
   const quiz = {
     results: [
@@ -41,19 +46,37 @@ export const GameScreen: React.FC = () => {
   const currentQuestion = results[activeQuestion]
   const [countQuestions] = useState<number>(results.length)
 
-  const checkAnswer = () => {
+  const checkAnswer = (): void => {
     if (currentQuestion) {
       setActiveQuestion(prev => prev + 1)
     }
   }
 
+  const handleEndQuizButton = (): void => {
+    setActiveValue('active')
+  }
+
+  const handleCancel = (): void => {
+    setActiveValue('hidden')
+  }
+
+  const handleConfirm = (): void => {
+    navigate('/')
+  }
+
   return (
     <div className={css.game_page}>
       <div className={css.progress_control}>
-        <MenuButton text="End quiz" />
+        <MenuButton handleButton={handleEndQuizButton} text="End quiz" />
         <ProgressBar progress={activeQuestion} max={countQuestions} />
         <Timer time="1m" />
       </div>
+      <PopUp
+        state={activeValue}
+        text={text}
+        handleCancel={handleCancel}
+        handleConfirm={handleConfirm}
+      />
       {currentQuestion && (
         <>
           <div className={css.questions}>{currentQuestion.question}</div>

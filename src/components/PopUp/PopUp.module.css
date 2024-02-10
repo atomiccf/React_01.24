@@ -1,0 +1,55 @@
+.modal {
+    display: flex;
+    flex-flow: column nowrap;
+    position: fixed;
+    top: 120px;
+    left: 630px;
+    margin: 0 auto;
+    width: 660px;
+    height: 300px;
+    background-color: white;
+    border: 2px solid #eedd44;
+    border-radius: 8px;
+    opacity: 0;
+    transition: .5s;
+
+
+}
+
+.active {
+    opacity: 1;
+}
+
+
+
+.modal_content {
+    width: 100%;
+    padding: 10px;
+    height: 280px;
+    color: #cf23cf;
+    font-size: 40px;
+    font-family: Modak, serif;
+    transform: scale(0.5);
+    transition: 0.4s all;
+}
+
+.popup_controls {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    transform: scale(0.5);
+    transition: 0.4s all;
+}
+
+.popup_button {
+
+    display: flex;
+    padding: 16px 40px;
+    align-items: center;
+    gap: 16px;
+    border: 2px solid #eedd44;
+    border-radius: 808px;
+    font-size: 25px;
+}
+
