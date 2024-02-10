@@ -1,10 +1,10 @@
 import './App.css'
-import {StatsScreen} from './screens/StatsScreen/StatsScreen.tsx'
+import {Outlet} from 'react-router-dom'
 
 function App() {
   return (
     <>
-      <StatsScreen />
+      <Outlet />
     </>
   )
 }
