@@ -1,14 +1,11 @@
 import React from 'react'
 import css from '../ProgressBar/ProgressBar.module.css'
 import {useNavigate} from 'react-router-dom'
-
-type ProgressBarProps = {
-  progress: number
-  max: number
-}
+import {ProgressBarProps} from '../../types/types.ts'
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({progress, max}) => {
   const navigate = useNavigate()
+
   if (progress === max) {
     navigate('/stats')
   }

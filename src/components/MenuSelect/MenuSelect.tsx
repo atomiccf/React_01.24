@@ -1,22 +1,23 @@
-import React from 'react'
+import {forwardRef} from 'react'
 import css from './MenuSelect.module.css'
+import {MenuSelectProps} from '../../types/types.ts'
 
-type MenuSelectProps = {
-  array: string[]
-  labelText: string
-}
-
-export const MenuSelect: React.FC<MenuSelectProps> = ({array, labelText}) => {
-  return (
-    <>
-      <label htmlFor={css.menu_select}>
-        {labelText}
-        <select name="menu_select" id={css.menu_select}>
-          {array.map(item => (
-            <option key={item}>{item}</option>
-          ))}
-        </select>
-      </label>
-    </>
-  )
-}
+export const MenuSelect = forwardRef<HTMLSelectElement, MenuSelectProps>(
+  ({array, labelText, handleChange, name}, ref) => {
+    return (
+      <>
+        <label htmlFor={css.menu_select}>
+          {labelText}
+          <select name={name} onChange={handleChange} id={css.menu_select} ref={ref}>
+            {array.map(item => (
+              <option value={item.id} key={item.id}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+        </label>
+      </>
+    )
+  }
+)
+MenuSelect.displayName = 'MenuSelect'

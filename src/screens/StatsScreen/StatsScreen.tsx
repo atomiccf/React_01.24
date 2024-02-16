@@ -1,15 +1,24 @@
 import css from './StatsScreen.module.css'
-import React from 'react'
+import React, {useContext} from 'react'
+import {clearQuestions, fetchQuestions} from '../../redux/questionsSlice.ts'
 import {MenuButton} from '../../components/MenuButton/MenuButton.tsx'
 import {useNavigate} from 'react-router-dom'
-import {PopUp} from '../../components/PopUp/PopUp.tsx'
+import {useDispatch} from 'react-redux'
+import {clearResult} from '../../redux/settingsSlice.ts'
+import {AppContext} from '../../context/context.tsx'
 
 export const StatsScreen: React.FC = () => {
+  const context = useContext(AppContext)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const handleRestartButton = () => {
+    // @ts-ignore
+    dispatch(fetchQuestions(context?.url))
     navigate('/game')
   }
   const handleAnotherButton = () => {
+    dispatch(clearQuestions())
+    dispatch(clearResult())
     navigate('/')
   }
   return (
@@ -26,7 +35,6 @@ export const StatsScreen: React.FC = () => {
         <li>Difficulty:</li>
         <li>Time spent:</li>
       </ul>
-      <PopUp state="active" />
       <div className={css.stat_controls}>
         <MenuButton handleButton={handleRestartButton} text="Restart" />
         <MenuButton handleButton={handleAnotherButton} text="Choose another quiz" />
