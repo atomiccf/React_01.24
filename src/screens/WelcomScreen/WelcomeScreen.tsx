@@ -8,7 +8,6 @@ import {AppContext} from '../../context/context.tsx'
 import {FormValues} from '../../interface/interfarce.ts'
 import {difficultyData, typeData, timeData} from '../../mockdata/mockdata.ts'
 import {сlearLink} from '../../utils/сlearLink.ts'
-import {fetchQuestions, setQuestions} from '../../redux/questionsSlice.ts'
 import {setResult} from '../../redux/settingsSlice.ts'
 import {useDispatch} from 'react-redux'
 import axios from 'axios'
@@ -28,7 +27,6 @@ export const WelcomeScreen: React.FC = () => {
     number: '',
   })
   const context = useContext(AppContext)
-
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -76,7 +74,6 @@ export const WelcomeScreen: React.FC = () => {
         number: refNumber.current?.value || '',
       })
     }, 1000)
-    // @ts-ignore
   }, [])
 
   return (

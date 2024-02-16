@@ -6,7 +6,7 @@ import {MenuButton} from '../../components/MenuButton/MenuButton.tsx'
 import {PopUp} from '../../components/PopUp/PopUp.tsx'
 import {useNavigate} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import { fetchQuestions, selectQuestions } from "../../redux/questionsSlice.ts";
+import {fetchQuestions, selectQuestions} from '../../redux/questionsSlice.ts'
 import {AppContext} from '../../context/context.tsx'
 
 export const GameScreen: React.FC = () => {
@@ -81,9 +81,7 @@ export const GameScreen: React.FC = () => {
           </div>
         </>
       )}
-      {!currentQuestion && (
-        <div className={css.end_notification}>Loading...</div>
-      )}
+      {!currentQuestion && <div className={css.end_notification}>Loading...</div>}
     </div>
   )
 }

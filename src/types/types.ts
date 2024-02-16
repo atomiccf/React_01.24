@@ -1,5 +1,5 @@
 import {TriviaCategory} from '../interface/interfarce.ts'
-import React, { ReactNode } from "react";
+import React, {ReactNode} from 'react'
 
 export type MenuSelectProps = {
   name: string

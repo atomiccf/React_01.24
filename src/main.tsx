@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import {Provider} from 'react-redux'
 import {store} from './redux/store.ts'
 import {RouterProvider} from 'react-router-dom'
-import {AppProvider} from "./context/context.tsx";
+import {AppProvider} from './context/context.tsx'
 import './index.css'
 import {router} from './routes/PagesRouter.tsx'
 

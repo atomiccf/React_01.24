@@ -24,5 +24,5 @@ const SettingsSlice = createSlice({
   },
 })
 
-export const {setResult,clearResult} = SettingsSlice.actions
+export const {setResult, clearResult} = SettingsSlice.actions
 export const SettingsReducer = SettingsSlice.reducer
