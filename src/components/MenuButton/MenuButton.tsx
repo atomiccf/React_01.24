@@ -1,10 +1,6 @@
 import React from 'react'
 import css from './MenuButton.module.css'
-
-type MenuButtonProps = {
-  text: string
-  handleButton?: () => void
-}
+import {MenuButtonProps} from '../../types/types.ts'
 
 export const MenuButton: React.FC<MenuButtonProps> = ({text, handleButton}) => {
   return (

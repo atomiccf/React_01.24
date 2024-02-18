@@ -1,11 +1,6 @@
 import React from 'react'
 import css from './PopUp.module.css'
-type PopUpProps = {
-  state: string
-  text?: string
-  handleConfirm?: () => void
-  handleCancel?: () => void
-}
+import {PopUpProps} from '../../types/types.ts'
 
 export const PopUp: React.FC<PopUpProps> = ({state, text, handleConfirm, handleCancel}) => {
   return (

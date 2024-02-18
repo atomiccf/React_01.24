@@ -1,50 +1,31 @@
 import css from './GameScreen.module.css'
-import React, {useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {ProgressBar} from '../../components/ProgressBar/ProgressBar.tsx'
 import {Timer} from '../../components/Timer/Timer.tsx'
 import {MenuButton} from '../../components/MenuButton/MenuButton.tsx'
 import {PopUp} from '../../components/PopUp/PopUp.tsx'
 import {useNavigate} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
+import {fetchQuestions, selectQuestions} from '../../redux/questionsSlice.ts'
+import {AppContext} from '../../context/context.tsx'
 
 export const GameScreen: React.FC = () => {
   const [activeQuestion, setActiveQuestion] = useState<number>(0)
   const [activeValue, setActiveValue] = useState<string>('hidden')
   const text = 'Do you want to stop this quiz? ?'
+  const context = useContext(AppContext)
+  const dispatch = useDispatch()
   const navigate = useNavigate()
+  // @ts-ignore
+  const questions = useSelector(selectQuestions)
+  // @ts-ignore
+  const settingsSelector = useSelector(state => state.settings)
 
-  const quiz = {
-    results: [
-      {
-        type: 'multiple',
-        difficulty: 'medium',
-        category: 'Entertainment: Video Games',
-        question: 'Which of these is NOT a game under the Worms series?',
-        correct_answer: 'Major Malfunction',
-        incorrect_answers: ['The Hotshot', 'Richard Branson', 'Junkrat and Roadhog'],
-      },
-      {
-        type: 'multiple',
-        difficulty: 'hard',
-        category: 'Entertainment: Video Games',
-        question: 'In the original DOOM (1993) which of the following is NOT a cheat code?',
-        correct_answer: 'IDCLIP',
-        incorrect_answers: ['The Hotshot', 'Richard Branson', 'Junkrat and Roadhog'],
-      },
+  console.log(questions)
 
-      {
-        type: 'boolean',
-        difficulty: 'easy',
-        category: 'Animals',
-        question:
-          'In 2016, the IUCN reclassified the status of Giant Pandas from endangered to vulnerable.',
-        correct_answer: 'True',
-        incorrect_answers: ['False'],
-      },
-    ],
-  }
-  const {results} = quiz
-  const currentQuestion = results[activeQuestion]
-  const [countQuestions] = useState<number>(results.length)
+  const quiz = questions
+  const {result} = quiz
+  const currentQuestion = result[activeQuestion]
 
   const checkAnswer = (): void => {
     if (currentQuestion) {
@@ -64,12 +45,20 @@ export const GameScreen: React.FC = () => {
     navigate('/')
   }
 
+  useEffect(() => {
+    // @ts-ignore
+
+    dispatch(fetchQuestions(context?.url))
+  }, [dispatch])
+  useEffect(() => {
+    console.log('Questions updated:', questions)
+  }, [questions])
   return (
     <div className={css.game_page}>
       <div className={css.progress_control}>
         <MenuButton handleButton={handleEndQuizButton} text="End quiz" />
-        <ProgressBar progress={activeQuestion} max={countQuestions} />
-        <Timer time="1m" />
+        <ProgressBar progress={activeQuestion} max={result.length} />
+        <Timer time={settingsSelector.result.time} />
       </div>
       <PopUp
         state={activeValue}
@@ -92,9 +81,7 @@ export const GameScreen: React.FC = () => {
           </div>
         </>
       )}
-      {!currentQuestion && (
-        <div className={css.end_notification}>You have already answered all questions !</div>
-      )}
+      {!currentQuestion && <div className={css.end_notification}>Loading...</div>}
     </div>
   )
 }
