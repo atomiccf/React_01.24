@@ -17,3 +17,5 @@ export const timeData: TriviaCategory[] = [
   {id: 60, name: '1m'},
   {id: 300, name: '5m'},
 ]
+export const text = 'Do you want to stop this quiz? ?'
+export const anyCategory: TriviaCategory = {id: 'any', name: `Any category`}

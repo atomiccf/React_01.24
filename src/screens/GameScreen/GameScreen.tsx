@@ -8,11 +8,12 @@ import {useNavigate} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {fetchQuestions, selectQuestions} from '../../redux/questionsSlice.ts'
 import {AppContext} from '../../context/context.tsx'
+import {text} from '../../mockdata/mockdata.ts'
 
 export const GameScreen: React.FC = () => {
   const [activeQuestion, setActiveQuestion] = useState<number>(0)
   const [activeValue, setActiveValue] = useState<string>('hidden')
-  const text = 'Do you want to stop this quiz? ?'
+
   const context = useContext(AppContext)
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -20,15 +21,17 @@ export const GameScreen: React.FC = () => {
   const questions = useSelector(selectQuestions)
   // @ts-ignore
   const settingsSelector = useSelector(state => state.settings)
-
-  console.log(questions)
-
   const quiz = questions
   const {result} = quiz
   const currentQuestion = result[activeQuestion]
 
-  const checkAnswer = (): void => {
+  const checkAnswer = (EO: React.MouseEvent<HTMLElement>): void => {
     if (currentQuestion) {
+      if (EO.currentTarget.innerText === currentQuestion.correct_answer) {
+        context?.setCorrect!(prev => prev + 1)
+        context?.setAmount!(prev => prev + 1)
+      }
+      context?.setAmount!(prev => prev + 1)
       setActiveQuestion(prev => prev + 1)
     }
   }
@@ -47,12 +50,8 @@ export const GameScreen: React.FC = () => {
 
   useEffect(() => {
     // @ts-ignore
-
     dispatch(fetchQuestions(context?.url))
   }, [dispatch])
-  useEffect(() => {
-    console.log('Questions updated:', questions)
-  }, [questions])
   return (
     <div className={css.game_page}>
       <div className={css.progress_control}>

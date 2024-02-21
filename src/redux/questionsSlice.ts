@@ -1,16 +1,16 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {QuestionInitialState} from '../interface/interfarce.ts'
+import {QuestionInitialState, questionState} from '../interface/interfarce.ts'
 import {Questions} from '../interface/interfarce.ts'
 import axios from 'axios'
 
 const initialState: QuestionInitialState = {
+  status: '',
   result: [],
 }
 
 export const fetchQuestions = createAsyncThunk('questions/FetchQuestions', async url => {
   // @ts-ignore
   const response = await axios.get(`${url}`)
-  console.log(response)
   return response.data.results
 })
 
@@ -23,15 +23,18 @@ const QuestionSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(fetchQuestions.fulfilled, (state, action: PayloadAction<Questions[]>) => {
-      console.log('Fulfilled Action Payload:', action.payload)
-      state.result = action.payload
-    })
+    builder
+      .addCase(fetchQuestions.pending, state => {
+        state.status = 'loading'
+      })
+      .addCase(fetchQuestions.fulfilled, (state, action: PayloadAction<Questions[]>) => {
+        state.status = 'succeeded'
+        state.result = action.payload
+      })
   },
 })
 
-// @ts-ignore
-export const selectQuestions = state => state.question
+export const selectQuestions = (state: questionState) => state.question
 
 export const {clearQuestions} = QuestionSlice.actions
 export const QuestionsReducer = QuestionSlice.reducer

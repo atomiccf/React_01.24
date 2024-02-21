@@ -1,0 +1,26 @@
+.statistic_page{
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../assets/Color Pack 6 1.png");
+}
+
+p{
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-family: Modak, serif;
+    font-size: 50px;
+}
+
+h4{
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-family: Modak, serif;
+     font-size: 50px;
+    text-align: center;
+}
