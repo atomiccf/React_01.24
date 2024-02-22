@@ -1,10 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {SettingsInitialState} from '../interface/interfarce.ts'
+import {SettingsInitialState, settingState} from '../interface/interfarce.ts'
 import {FormValues} from '../interface/interfarce.ts'
 
 const initialState: SettingsInitialState = {
   result: {
-    category: '',
+    category: {value: '', name: ''},
     difficulty: '',
     type: '',
     time: '',
@@ -24,5 +24,6 @@ const SettingsSlice = createSlice({
   },
 })
 
+export const selectSettings = (state: settingState) => state.settings.result
 export const {setResult, clearResult} = SettingsSlice.actions
 export const SettingsReducer = SettingsSlice.reducer

@@ -3,12 +3,15 @@ import React, {useContext} from 'react'
 import {clearQuestions, fetchQuestions} from '../../redux/questionsSlice.ts'
 import {MenuButton} from '../../components/MenuButton/MenuButton.tsx'
 import {useNavigate} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
-import {clearResult} from '../../redux/settingsSlice.ts'
+import {useDispatch, useSelector} from 'react-redux'
+import {clearResult, selectSettings} from '../../redux/settingsSlice.ts'
 import {AppContext} from '../../context/context.tsx'
+import {timer} from '../../utils/timer.ts'
 
 export const StatsScreen: React.FC = () => {
   const context = useContext(AppContext)
+  const settings = useSelector(selectSettings)
+  console.log(settings)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const handleRestartButton = () => {
@@ -28,12 +31,12 @@ export const StatsScreen: React.FC = () => {
       </h2>
       <h3>Quiz configuration: </h3>
       <ul>
-        <li>Correct answers:</li>
-        <li>Type:</li>
-        <li>Category:</li>
-        <li>Time:</li>
-        <li>Difficulty:</li>
-        <li>Time spent:</li>
+        <li> {`Correct answers: ${context?.correctAnswers}`}</li>
+        <li>{`Type: ${settings.type}`}</li>
+        <li>{`Category: ${settings.category.name}`}</li>
+        <li>{`Time: ${timer(Number(settings.time))}`}</li>
+        <li>{`Difficulty: ${settings.difficulty}`}</li>
+        <li> {`Time spent: ${context?.spentTime}`}</li>
       </ul>
       <div className={css.stat_controls}>
         <MenuButton handleButton={handleRestartButton} text="Restart" />

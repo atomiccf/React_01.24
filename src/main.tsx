@@ -6,12 +6,16 @@ import {RouterProvider} from 'react-router-dom'
 import {AppProvider} from './context/context.tsx'
 import './index.css'
 import {router} from './routes/PagesRouter.tsx'
-
+import {PersistGate} from 'redux-persist/integration/react'
+import {persistStore} from 'redux-persist'
+const persistor = persistStore(store)
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AppProvider>
       <Provider store={store}>
-        <RouterProvider router={router} />
+        <PersistGate persistor={persistor}>
+          <RouterProvider router={router} />
+        </PersistGate>
       </Provider>
     </AppProvider>
   </React.StrictMode>
