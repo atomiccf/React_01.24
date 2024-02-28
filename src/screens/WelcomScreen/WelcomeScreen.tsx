@@ -4,6 +4,7 @@ import {MenuInput} from '../../components/MenuInput/MenuInput.tsx'
 import {MenuSelect} from '../../components/MenuSelect/MenuSelect.tsx'
 import {useNavigate} from 'react-router-dom'
 import React, {useEffect, useState, useRef, useContext} from 'react'
+import {motion} from 'framer-motion'
 import {AppContext} from '../../context/context.tsx'
 import {FormValues} from '../../interface/interfarce.ts'
 import {difficultyData, typeData, timeData, anyCategory} from '../../mockdata/mockdata.ts'
@@ -93,7 +94,9 @@ export const WelcomeScreen: React.FC = () => {
   console.log(formValues)
   return (
     <div className={css.main_page}>
-      <h1 className={css.main_header}>Virtual Quiz</h1>
+      <motion.h1 className={css.main_header} whileHover={{scale: 1.1}}>
+        Virtual Quiz
+      </motion.h1>
       <div className={css.select_menu}>
         <MenuSelect
           ref={refCategory as React.Ref<HTMLSelectElement>}
