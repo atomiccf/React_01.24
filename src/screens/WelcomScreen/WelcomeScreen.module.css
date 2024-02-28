@@ -5,6 +5,7 @@
     }
 
 .main_header{
+    margin: 0;
     text-align: center;
     text-shadow: 8px 8px 0 #9E52FF;
     font-family: Modak, serif;
