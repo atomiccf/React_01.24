@@ -8,11 +8,17 @@ export interface TriviaCategory {
 export interface statisticsInitialState {
   totalQuestions: number
   correctQuestions: number
-  categoryQuestions: []
-  difficultyQuestions: []
-  typeQuestions: []
+  categoryQuestions: Question[]
+  difficultyQuestions: Question[]
+  typeQuestions: Question[]
 }
 
+interface Question {
+  category?: string
+  difficulty?: string
+  type?: string
+  number: number
+}
 export interface SettingsInitialState {
   result: FormValues
 }

@@ -9,7 +9,6 @@ const initialState: QuestionInitialState = {
 }
 
 export const fetchQuestions = createAsyncThunk('questions/FetchQuestions', async url => {
-  // @ts-ignore
   const response = await axios.get(`${url}`)
   return response.data.results
 })

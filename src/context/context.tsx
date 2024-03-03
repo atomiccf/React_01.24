@@ -7,8 +7,8 @@ export const AppContext = createContext<AppContextProps | undefined>(undefined)
 export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
   const [url, setURL] = useState<string>('')
   const [endQuestion, setEndQuestion] = useState<boolean>(false)
-  const [correctAnswers, setCorrectAnswers] = useState(0)
-  const [amountAnswers, setAmountAnswers] = useState(0)
+  const [correctAnswers, setCorrectAnswers] = useState<number>(0)
+  const [amountAnswers, setAmountAnswers] = useState<number>(0)
   const [spentTime, setSpentTime] = useState<string>('')
 
   const setLink = (value: string) => {
@@ -22,15 +22,14 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
     setSpentTime(value)
   }
 
-  const setCorrect = (value: number) => {
+  const setCorrect = (value: React.SetStateAction<number>) => {
     setCorrectAnswers(value)
   }
 
-  const setAmount = (value: number) => {
+  const setAmount = (value: React.SetStateAction<number>) => {
     setAmountAnswers(value)
   }
 
-  // @ts-ignore
   return (
     <AppContext.Provider
       value={{
@@ -40,9 +39,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({children}) => {
         setQuestionEnding,
         spentTime,
         setTime,
-        // @ts-ignore
         setAmount,
-        // @ts-ignore
         setCorrect,
         correctAnswers,
         amountAnswers,
