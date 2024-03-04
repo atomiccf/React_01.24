@@ -15,19 +15,16 @@ const statisticsSlice = createSlice({
   name: 'statistics',
   initialState,
   reducers: {
-    finishQuiz: (state, action) => {
+    finishQuiz: (state: statisticsInitialState, action) => {
       state.totalQuestions += action.payload.totalQuestions
       state.correctQuestions += action.payload.correctQuestions
       if (typeof action.payload.category === 'string') {
         const categoryQuestion = state.categoryQuestions.find(
-          // @ts-ignore
           question => question.category === action.payload.category
         )
         if (categoryQuestion) {
-          // @ts-ignore
           categoryQuestion.number += action.payload.categoryQuestions
         } else {
-          // @ts-ignore
           state.categoryQuestions.push({
             category: action.payload.category,
             number: action.payload.categoryQuestions,
@@ -36,14 +33,11 @@ const statisticsSlice = createSlice({
       }
       if (typeof action.payload.difficulty === 'string') {
         const difficultyQuestion = state.difficultyQuestions.find(
-          // @ts-ignore
           question => question.difficulty === action.payload.difficulty
         )
         if (difficultyQuestion) {
-          // @ts-ignore
           difficultyQuestion.number += action.payload.difficultyQuestions
         } else {
-          // @ts-ignore
           state.difficultyQuestions.push({
             difficulty: action.payload.difficulty,
             number: action.payload.difficultyQuestions,
@@ -51,16 +45,12 @@ const statisticsSlice = createSlice({
         }
       }
       if (typeof action.payload.type === 'string') {
-        // @ts-ignore
         const typeQuestion = state.typeQuestions.find(
-          // @ts-ignore
           question => question.type === action.payload.type
         )
         if (typeQuestion) {
-          // @ts-ignore
           typeQuestion.number += action.payload.typeQuestions
         } else {
-          // @ts-ignore
           state.typeQuestions.push({
             type: action.payload.type,
             number: action.payload.typeQuestions,
